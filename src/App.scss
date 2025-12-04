@@ -40,7 +40,7 @@ body{
   align-items: center;
   width: 100%;
   margin-top: 6rem;
-  z-index: 10;
+  text-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   h2{
     font-size: 3rem;
     font-weight: 600;
@@ -70,7 +70,7 @@ body{
   .login-desc{
     margin-top: 1.5rem;
     margin-bottom: 3rem;
-    font-size: 0.75rem;
+    font-size: 1rem;
     font-weight: 600;
   }
   button{
@@ -131,17 +131,17 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: translateX(-0.25rem);
+    transform: translateX(-0.75rem);
     font-weight: 600;
     img{
-    width: 48px;
-    height: 48px;
+    width: 3.5rem;
+    height: 3.5rem;
     }
   }
   >p{
-    font-size: 0.75rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin-top: -0.25rem;
+    margin-top: -0.5rem;
     margin-bottom: 1.5rem;
   }
 }
@@ -181,9 +181,20 @@ body{
   max-width: 37rem;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 1.5rem;
+  column-gap: 2rem;
   row-gap: 0.5rem;
   justify-content: center;
+  position: relative;
+  &::before{
+    content: "";
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    left: 50%;
+    width: 1px;
+    background: #FFF;
+    transform: translateX(-50%);
+  }
   li{
     display: flex;
     align-items: flex-start;
