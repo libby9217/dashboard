@@ -222,13 +222,13 @@ body{
       height: 24px;
       cursor: pointer;
       background-size: cover;
-      background-image: url('../public/images/close-off.svg');
+      background-image: url('../public/images/close-on.svg');
       border: none;
       outline: none;
       background-color: transparent;
     }
     .todo-close:hover {
-      background-image: url('../public/images/close-on.svg');
+      background-image: url('../public/images/close-off.svg');
     }
   }
 }
