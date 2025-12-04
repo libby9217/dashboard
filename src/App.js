@@ -4,7 +4,7 @@ import Hello from './components/Hello';
 import Login from './components/Login';
 import { useEffect, useState } from 'react';
 import Quotes from './components/Quotes';
-import "./App.css";
+import "./App.scss";
 
 function App() {
   const [userName, setUserName] = useState(null);
@@ -25,13 +25,18 @@ function App() {
     setUserName(saved);
   }, []);
   return (
-    <div className="App">
-      {
-        userName ? <Hello user={userName} onLogout={handleLogout} /> : <Login onLogin={handleLogin}/>
-      }
-      <Quotes />
-      <Todos />
-      <Weather />
+    <div className={`App ${userName ? "is-logged-in" : ""}`}>
+      <div className='app_content'>
+        {userName ? (
+          <>
+            <Weather />
+            <Hello user={userName} onLogout={handleLogout} />
+            <Todos />
+            <Quotes />
+          </>
+        ) : (<Login onLogin={handleLogin}/>
+        )}
+      </div>
     </div>
   );
 }

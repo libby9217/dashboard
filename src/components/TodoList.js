@@ -5,14 +5,13 @@ const TodoList = ({todos, onDel, onToggle})=>{
         todos.map((list, idx)=>{
           return (
           <li key={idx}>
-            <input
-            type="checkbox"
-            onChange={()=>{onToggle(list.id)}}
-            checked={list.done}
-            />
+            <span
+              className={`todo-checkbox ${list.done ? "on" : "off"}`}
+              onClick={() => onToggle(list.id)}
+            ></span>
             <span 
-            style={{textDecoration: list.done ? "line-through" : "none", textDecorationColor : list.done ? "rgba(0, 115, 255, 0.5)" : "none", textDecorationThickness : list.done ? "10px" : "none"}}>{list.todo}</span>
-            <button onClick={()=>{onDel(list.id)}}>×</button>
+            style={{textDecoration: list.done ? "line-through" : "none", textDecorationColor : list.done ? "#FFF" : "none", textDecorationThickness : list.done ? "2px" : "none"}}>{list.todo}</span>
+            <button className="todo-close" onClick={()=>{onDel(list.id)}}></button>
             </li>
             )
         })

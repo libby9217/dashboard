@@ -6,6 +6,9 @@ import TodoList from "./TodoList"
            * done: true/false
            * todo: text
           */
+
+const MAX_TODOS = 6;
+
 const Todos = ()=>{
   const [todos, setTodos] = useState(()=>{
     //localstorage에 있는 TODOS를 읽어오기
@@ -18,7 +21,14 @@ const Todos = ()=>{
     const saved = JSON.stringify(todos);
     localStorage.setItem("TODOS", saved)
   }, [todos]);
+  // 8개 이상 입력불가 알림
+  const isFull = todos.length >= MAX_TODOS;
   const handleTodosSave = (list)=>{
+    const text = list.trim();
+    if (!text) return;
+    if (isFull){
+      alert(`할 일은 최대 ${MAX_TODOS}개까지만 추가할 수 있어요!`); return;
+    }
     //배열에 저장
     // setTodos((prev)=>{return [...prev, list]});
     const newTodo = {id:Date.now(), done:false, todo:list}
@@ -38,8 +48,8 @@ const Todos = ()=>{
     setTodos(update);
   }
   return (
-    <div id="toto-page">
-      <TodoForm onSave={handleTodosSave} />
+    <div id="todo-page">
+      <TodoForm onSave={handleTodosSave} isFull={isFull} />
       <TodoList todos={todos} onDel={handleTodosDel} onToggle={handleToggle} />
     </div>
   )
